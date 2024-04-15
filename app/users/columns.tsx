@@ -13,8 +13,6 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 
-// This type is used to define the shape of our data.
-// You can use a Zod schema here if you want.
 export type User = {
   id: string;
   name: string;
@@ -26,6 +24,7 @@ export type User = {
 export const columns: ColumnDef<User>[] = [
   {
     id: 'select',
+    accessorKey: 'select',
     header: ({ table }) => (
       <Checkbox
         checked={
@@ -47,10 +46,12 @@ export const columns: ColumnDef<User>[] = [
     enableHiding: false,
   },
   {
+    id: 'name',
     accessorKey: 'name',
     header: ({ column }) => {
       return (
         <Button
+          className="pl-0"
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
         >
@@ -61,10 +62,12 @@ export const columns: ColumnDef<User>[] = [
     },
   },
   {
+    id: 'email',
     accessorKey: 'email',
     header: ({ column }) => {
       return (
         <Button
+          className="pl-0"
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
         >
@@ -75,6 +78,7 @@ export const columns: ColumnDef<User>[] = [
     },
   },
   {
+    id: 'lastSeen',
     accessorKey: 'lastSeen',
     header: 'Last Seen',
     cell: ({ row }) => {
@@ -84,6 +88,7 @@ export const columns: ColumnDef<User>[] = [
     },
   },
   {
+    id: 'actions',
     accessorKey: 'actions',
     header: 'Actions',
     cell: ({ row }) => {
